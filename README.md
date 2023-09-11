@@ -67,6 +67,7 @@ Data from the [2021 Census](https://www.abs.gov.au/census/find-census-data/datap
 - `2021Census_G34_VIC_LGA.csv` contains 'Number of Motor Vehicles by Dwellings'
 - `2021Census_G36_VIC_LGA.csv` contains 'Dwelling Structure'
 - `2021Census_G41_VIC_LGA.csv` contains 'Dwelling Structure by Number of Bedrooms'
+- `georef-australia-local-government-area.csv` contains 2021 shape files and LGA names from [opendatasoft](https://public.opendatasoft.com/explore/dataset/georef-australia-local-government-area/table/?disjunctive.ste_code&disjunctive.ste_name&disjunctive.lga_code&disjunctive.lga_name)
 
 As the column names in these files are are abbreviated, a reference document with longer column names is included in `cell_descriptors.csv`
 
