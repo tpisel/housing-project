@@ -28,27 +28,24 @@ DB_EXISTS=$(psql -h localhost -U postgres -tAc "SELECT 1 FROM pg_database WHERE 
 
 if [ "$DB_EXISTS" = "1" ];
 then
-    echo "Database $DB_NAME already exists. Exiting."
+    echo "Database $DB_NAME already exists. Exiting." # to handle better, ask to drop and reupload or skip
     exit 1
 else
     createdb -h localhost -U postgres $DB_NAME
 fi
 
-psql -h localhost -U postgres -d $DB_NAME -f Database/crowdfunding_db_schema.sql
-
-
-
 # create the tables
 
-
+psql -h localhost -U postgres -d $DB_NAME -f src/schema.sql
 
 # upload data from CSVs and create joined census view for querying with transforms
 
+psql -h localhost -U postgres -d $DB_NAME -f src/psql-scripts.sql
 
 
 # query some data from api (with status bars)
 
-
+callapi.py
 
 # start flask app in background process
 
