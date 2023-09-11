@@ -18,8 +18,16 @@ idea is to have all the LGAs in melbourne, and overlay census data and planning 
 
 maybe allow zooming in when an LGA is selected and regex / filtering on descriptions
 
+Could color / tag them based on content, see example in `Week 15 / 3 / 02-Stu_CitiBike_Leaflet`
+
 some kind of time series (perhaps from census data)
 
+must use leaflet / plotly and something new 
+
+maybe encode in geojson
+
+
+For inspiration: [Housing density in Melbourne](https://chartingtransport.com/2023/06/10/how-is-population-density-changing-in-australian-cities-2023-update/)
 
 ## Architecture
 
@@ -28,25 +36,22 @@ This is an end-to-end data visualisation application that retrieves data from an
 Two processes must be running for the application to work, the PostgreSQL database and the Flask webserver that serves the API requests.
 
 
+// put an image in here 
 
-// put an image in here
 
+### Postgres Database
+
+Data
 
 
 ## Pre-requisites
 
-You will need to have Postgres and `psql` installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for two API keys:
+You will need to have Postgres and `psql` installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for an API key from PlanningAlerts. Sing up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
 
 
 
+// will need to store API key (use `keyring` in sh script if doesn't already exist)
 
-// how to store secrets for the API (use `keyring`)
-
-
-
-```sh
-keyring set 
-```
 
 
 ## Initialisation
@@ -61,8 +66,14 @@ To run the app, run `sh initialise.sh` in terminal from the project root directo
 
 ### `/resources` data
 
-- ex.csv
-- ex.csv
+Data from the [2021 Census](https://www.abs.gov.au/census/find-census-data/datapacks?release=2021&product=GCP&geography=LGA&header=S):
+
+- `2021Census_G02_VIC_LGA.csv` contains 'Selected Medians and Averages'
+- `2021Census_G34_VIC_LGA.csv` contains 'Number of Motor Vehicles by Dwellings'
+- `2021Census_G36_VIC_LGA.csv` contains 'Dwelling Structure'
+- `2021Census_G41_VIC_LGA.csv` contains 'Dwelling Structure by Number of Bedrooms'
+
+As the column names in these files are are abbreviated, a reference document with longer column names is included in `cell_descriptors.csv`
 
 ## Disclaimer
 
