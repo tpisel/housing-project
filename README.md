@@ -12,7 +12,9 @@ Bootcamp project 3
 
 ## Topic 
 
-// Housing / planning to expand on
+// **Housing** / to expand on intro here
+
+![](img/header.jpg)
 
 idea is to have all the LGAs in melbourne, and overlay census data and planning permits
 
@@ -20,11 +22,35 @@ maybe allow zooming in when an LGA is selected and regex / filtering on descript
 
 Could color / tag them based on content, see example in `Week 15 / 3 / 02-Stu_CitiBike_Leaflet`
 
-some kind of time series (perhaps from census data)
+some kind of time series perhaps, each json object has a timestamp attached to it
 
 must use leaflet / plotly and something new 
 
 maybe encode in geojson
+
+example API response
+
+```json
+{
+"application": {
+"id": 3005309,
+"council_reference": "0062/20 - SC1 (VicSmart)",
+"date_scraped": "2023-09-06T05:44:03.406Z",
+"address": "29 Murray Street, Prahran VIC 3181",
+"description": "Secondary Consent Amendment to approved plans - The proposed change is to reduce the height of the fence from 1.95m to 1.5m. All other aspects to remain the same.",
+"info_url": "https://eplanning.stonnington.vic.gov.au/EPlanning/Public/ViewActivity.aspx?refid=0062/20%20-%20SC1%20(VicSmart)",
+"comment_url": null,
+"date_received": "2023-09-06",
+"on_notice_from": null,
+"on_notice_to": null,
+"lat": -37.8501144,
+"lng": 144.9995149,
+"authority": {
+"full_name": "City of Stonnington"
+}
+}
+}
+```
 
 
 For inspiration: [Housing density in Melbourne](https://chartingtransport.com/2023/06/10/how-is-population-density-changing-in-australian-cities-2023-update/)
