@@ -1,10 +1,232 @@
 -- table schema for the database
 
-
-CREATE TABLE G02
+-- Local Government Areas
+CREATE TABLE local_gov_area
 (
     LGA_CODE_2021 VARCHAR(16) NOT NULL,
-    category TEXT UNIQUE NOT NULL,
-    CONSTRAINT pk_category
-        PRIMARY KEY (category_id)
+    LGA_Name VARCHAR(64) NOT NULL,
+    url_name VARCHAR(64), -- name for joining to the API queries
+    url_fullname VARCHAR(64),
+    CONSTRAINT pk_lga
+        PRIMARY KEY (LGA_CODE_2021)
+);
+
+-- G02: 'Selected Medians and Averages'
+CREATE TABLE selected_medians
+(
+    LGA_CODE_2021 VARCHAR(16) NOT NULL,
+    Median_age_persons SMALLINT,
+    Median_mortgage_repay_monthly INTEGER,
+    Median_tot_prsnl_inc_weekly INTEGER,
+    Median_rent_weekly INTEGER,
+    Median_tot_fam_inc_weekly INTEGER,
+    Average_num_psns_per_bedroom REAL,
+    Median_tot_hhd_inc_weekly INTEGER,
+    Average_household_size REAL,
+    CONSTRAINT pk_g2lga
+        FOREIGN KEY (LGA_CODE_2021) REFERENCES local_gov_area
+);
+
+-- G34: 'Number of Motor Vehicles by Dwellings'
+CREATE TABLE vehicles_per_dwelling
+(
+    LGA_CODE_2021 VARCHAR(16) NOT NULL,
+    Num_MVs_per_dweling_0_MVs INTEGER,
+    Num_MVs_per_dweling_1_MVs INTEGER,
+    Num_MVs_per_dweling_2_MVs INTEGER,
+    Num_MVs_per_dweling_3_MVs INTEGER,
+    Num_MVs_per_dweling_4mo_MVs INTEGER,
+    Num_MVs_per_dweling_Tot INTEGER,
+    Num_MVs_NS INTEGER,
+    Total_dwelings INTEGER,
+    CONSTRAINT pk_g34lga
+        FOREIGN KEY (LGA_CODE_2021) REFERENCES local_gov_area
+);
+
+-- G36: 'Dwelling Structure'
+CREATE TABLE dwelling_structure
+(
+    LGA_CODE_2021 VARCHAR(16) NOT NULL,
+    OPDs_Separate_house_Dwellings INTEGER,
+    OPDs_Separate_house_Persons INTEGER,
+    OPDs_SD_r_t_h_th_1_sty_Dwgs INTEGER,
+    OPDs_SD_r_t_h_th_1_sty_Psns INTEGER,
+    OPDs_SD_r_t_h_th_2_m_sty_Dwgs INTEGER,
+    OPDs_SD_r_t_h_th_2_m_sty_Psns INTEGER,
+    OPDs_SD_r_t_h_th_Tot_Dwgs INTEGER,
+    OPDs_SD_r_t_h_th_Tot_Psns INTEGER,
+    OPDs_F_ap_I_1or2_sty_blk_Ds INTEGER,
+    OPDs_F_ap_I_1or2_sty_blk_Ps INTEGER,
+    OPDs_F_ap_I_3_sty_blk_Dwgs INTEGER,
+    OPDs_F_ap_I_3_sty_blk_Psns INTEGER,
+    OPDs_F_ap_I_4to8_sty_blk_Ds INTEGER,
+    OPDs_F_ap_I_4to8_sty_blk_Ps INTEGER,
+    OPDs_F_ap_I_9_m_sty_blk_Ds INTEGER,
+    OPDs_F_ap_I_9_m_sty_blk_Ps INTEGER,
+    OPDs_Flt_apt_Att_house_Ds INTEGER,
+    OPDs_Flt_apt_Att_house_Ps INTEGER,
+    OPDs_Flt_apart_Tot_Dwgs INTEGER,
+    OPDs_Flt_apart_Tot_Psns INTEGER,
+    OPDs_Oth_dwg_Cvn_Ds INTEGER,
+    OPDs_Oth_dw_Cvn_Ps INTEGER,
+    OPDs_Oth_dwg_cab_hboat_Ds INTEGER,
+    OPDs_Oth_dwg_cab_hboat_Ps INTEGER,
+    OPDs_Ot_dwg_Im_hm_tnt_SO_Ds INTEGER,
+    OPDs_Ot_dwg_Im_hm_tnt_SO_Ps INTEGER,
+    OPDs_Ot_dwg_Hs_f_att_sh_of_Ds INTEGER,
+    OPDs_Ot_dwg_Hs_f_att_sh_of_Ps INTEGER,
+    OPDs_Other_dwelling_Tot_Dwgs INTEGER,
+    OPDs_Other_dwelling_Tot_Psns INTEGER,
+    OPDs_Dwlling_structur_NS_Dwgs INTEGER,
+    OPDs_Dwlling_structur_NS_Psns INTEGER,
+    OPDs_Tot_OPDs_Dwellings INTEGER,
+    OPDs_Tot_OPDs_Persons INTEGER,
+    Unoccupied_PDs_Dwgs INTEGER,
+    Unoccupied_PDs_Psns INTEGER,
+    Total_PDs_Dwellings INTEGER,
+    Total_PDs_Persons INTEGER,
+    CONSTRAINT pk_g36lga
+        FOREIGN KEY (LGA_CODE_2021) REFERENCES local_gov_area
+);
+
+-- G41: 'Dwelling Structure by Number of Bedrooms'
+CREATE TABLE dwellings_by_bedroom
+(
+    LGA_CODE_2021 VARCHAR(16) NOT NULL,
+    Separate_house_NofB_0_i_b INTEGER,
+    Separate_house_NofB_1 INTEGER,
+    Separate_house_NofB_2 INTEGER,
+    Separate_house_NofB_3 INTEGER,
+    Separate_house_NofB_4 INTEGER,
+    Separate_house_NofB_5 INTEGER,
+    Separate_house_NofB_6_or_m INTEGER,
+    Separate_house_NofB_NS INTEGER,
+    Separate_house_Total INTEGER,
+    Se_d_r_or_t_h_t_1_s_NofB_0_ib INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_1 INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_2 INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_3 INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_4 INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_5 INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_6_m INTEGER,
+    Se_d_r_or_t_h_t_1_st_NofB_NS INTEGER,
+    Se_d_r_or_t_h_t_1_st_Total INTEGER,
+    Se_d_r_or_t_h_t_2_s_NofB_0_ib INTEGER,
+    Se_d_r_or_t_h_t_2_sts_NofB_1 INTEGER,
+    Se_d_r_or_t_h_t_2_sts_NofB_2 INTEGER,
+    Se_d_r_or_t_h_t_2_sts_NofB_3 INTEGER,
+    Se_d_r_or_t_h_t_2_sts_NofB_4 INTEGER,
+    Se_d_r_or_t_h_t_2_sts_NofB_5 INTEGER,
+    Se_d_r_or_t_h_t_2_st_NofB_6_m INTEGER,
+    Se_d_r_or_t_h_t_2_sts_NofB_NS INTEGER,
+    Se_d_r_or_t_h_t_2_sts_Total INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_0_ib INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_1 INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_2 INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_3 INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_4 INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_5 INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_6_m INTEGER,
+    Se_d_r_or_t_h_t_Tot_NofB_NS INTEGER,
+    Se_d_r_or_t_h_t_Tot_Total INTEGER,
+    Flt_at_1or2_st_bl_NofB_0_ib INTEGER,
+    Flt_at_In_1or2_s_b_NofB_1 INTEGER,
+    Flt_at_In_1or2_s_b_NofB_2 INTEGER,
+    Flt_at_In_1or2_s_b_NofB_3 INTEGER,
+    Flt_at_In_1or2_s_b_NofB_4 INTEGER,
+    Flt_at_In_1or2_s_b_NofB_5 INTEGER,
+    Flt_at_In_1or2_s_b_NoB_6_m INTEGER,
+    Flt_at_In_1or2_s_b_NoB_NS INTEGER,
+    Flt_at_In_1or2_s_b_Total INTEGER,
+    Flt_apt_3_st_bl_NoB_0_ib INTEGER,
+    Flt_apt_In_3_st_bl_NofB_1 INTEGER,
+    Flt_apt_In_3_st_bl_NofB_2 INTEGER,
+    Flt_apt_In_3_st_bl_NofB_3 INTEGER,
+    Flt_apt_In_3_st_bl_NofB_4 INTEGER,
+    Flt_apt_In_3_st_bl_NofB_5 INTEGER,
+    Flt_apt_In_3_s_bl_NofB_6_m INTEGER,
+    Flt_apt_In_3_st_bl_NofB_NS INTEGER,
+    Flt_apt_In_3_st_bl_Total INTEGER,
+    Flt_apt_4to8_s_b_NofB_0_ib INTEGER,
+    Flt_apt_4to8_s_b_NofB_1 INTEGER,
+    Flt_apt_4to8_s_b_NofB_2 INTEGER,
+    Flt_apt_4to8_s_b_NofB_3 INTEGER,
+    Flt_apt_4to8_s_b_NofB_4 INTEGER,
+    Flt_apt_4to8_s_b_NofB_5 INTEGER,
+    Flt_apt_4to8_s_b_NofB_6_m INTEGER,
+    Flt_apt_4to8_s_b_NofB_NS INTEGER,
+    Flt_apt_4to8_s_b_Total INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_0_ib INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_1 INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_2 INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_3 INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_4 INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_5 INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_6_m INTEGER,
+    Flt_apt_9_or_m_s_b_NofB_NS INTEGER,
+    Flt_apt_9_or_m_s_b_Total INTEGER,
+    Flt_apt_At_to_a_h_NofB_0_ib INTEGER,
+    Flt_apt_At_to_a_hse_NofB_1 INTEGER,
+    Flt_apt_At_to_a_hse_NofB_2 INTEGER,
+    Flt_apt_At_to_a_hse_NofB_3 INTEGER,
+    Flt_apt_At_to_a_hse_NofB_4 INTEGER,
+    Flt_apt_At_to_a_hse_NofB_5 INTEGER,
+    Flt_apt_At_to_a_hs_NofB_6_m INTEGER,
+    Flt_apt_At_to_a_hs_NofB_NS INTEGER,
+    Flt_apt_At_to_a_hse_Total INTEGER,
+    Flt_apart_Tot_NofB_0_i_b INTEGER,
+    Flt_apart_Tot_NofB_1 INTEGER,
+    Flt_apart_Tot_NofB_2 INTEGER,
+    Flt_apart_Tot_NofB_3 INTEGER,
+    Flt_apart_Tot_NofB_4 INTEGER,
+    Flt_apart_Tot_NofB_5 INTEGER,
+    Flt_apart_Tot_NofB_6_or_m INTEGER,
+    Flt_apart_Tot_NofB_NS INTEGER,
+    Flt_apart_Tot_Total INTEGER,
+    Other_dwelling_NofB_0_i_b INTEGER,
+    Other_dwelling_NofB_1 INTEGER,
+    Other_dwelling_NofB_2 INTEGER,
+    Other_dwelling_NofB_3 INTEGER,
+    Other_dwelling_NofB_4 INTEGER,
+    Other_dwelling_NofB_5 INTEGER,
+    Other_dwelling_NofB_6_or_m INTEGER,
+    Other_dwelling_NofB_NS INTEGER,
+    Other_dwelling_Total INTEGER,
+    Dweling_structu_NS_NofB_0_i_b INTEGER,
+    Dweling_structur_NS_NofB_1 INTEGER,
+    Dweling_structur_NS_NofB_2 INTEGER,
+    Dweling_structur_NS_NofB_3 INTEGER,
+    Dweling_structur_NS_NofB_4 INTEGER,
+    Dweling_structur_NS_NofB_5 INTEGER,
+    Dwelig_struct_NS_NofB_6_or_m INTEGER,
+    Dweling_structur_NS_NofB_NS INTEGER,
+    Dweling_structur_NS_Total INTEGER,
+    Total_NofB_0_i_b INTEGER,
+    Total_NofB_1 INTEGER,
+    Total_NofB_2 INTEGER,
+    Total_NofB_3 INTEGER,
+    Total_NofB_4 INTEGER,
+    Total_NofB_5 INTEGER,
+    Total_NofB_6_or_m INTEGER,
+    Total_NofB_NS INTEGER,
+    Total_Total INTEGER,
+    CONSTRAINT pk_g41lga
+        FOREIGN KEY (LGA_CODE_2021) REFERENCES local_gov_area
+);
+
+CREATE TABLE planning_application
+(
+    id BIGINT NOT NULL,
+    council_reference TEXT,
+    date_scraped DATE,
+    address TEXT,
+    description TEXT,
+    info_url TEXT,
+    comment_url TEXT,
+    date_received DATE,
+    on_notice_from DATE,
+    on_notice_to DATE,
+    authority JSON,
+    CONSTRAINT pk_pa
+        PRIMARY KEY (id)
 );
