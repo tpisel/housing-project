@@ -8,7 +8,7 @@ Bootcamp project 3
 - Rhiannyn Geeson
 - Tom Pisel
 - Sagar Bora
-- Raviska
+- Raviska Marasingha
 
 ## Topic 
 
@@ -39,15 +39,9 @@ Two processes must be running for the application to work, the PostgreSQL databa
 // put an image in here 
 
 
-### Postgres Database
-
-Data
-
-
 ## Pre-requisites
 
 You will need to have Postgres and `psql` installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for an API key from PlanningAlerts. Sing up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
-
 
 
 // will need to store API key (use `keyring` in sh script if doesn't already exist)
@@ -61,7 +55,8 @@ To run the app, run `sh initialise.sh` in terminal from the project root directo
 ### `/src` scripts
 
 - ex.py
-- ex.py 
+- ex.js
+- ex.css
 
 
 ### `/resources` data
