@@ -1,5 +1,9 @@
 # configuration dictionary that determines what gets exported from the API endpoints
 
+# each endpoint listed here will be a flask route and return data from the tables in the database
+
+# localhost/census
+
 endpoints = [
     {
         "name": "census",
@@ -12,3 +16,5 @@ endpoints = [
         "columns": ["info_url", "comment_url", "date_received"]
     }
 ]
+
+
