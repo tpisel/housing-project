@@ -1,5 +1,6 @@
 import keyring
 from flask import jsonify
+from datetime import datetime, timedelta
 
 def get_secret(secret):
     match secret:
@@ -14,4 +15,8 @@ def jsonify_from_result(result_from_execute):
     column_names = result_from_execute.keys()
     results_list = [dict(zip(column_names, row)) for row in result_from_execute]
     return jsonify(results_list)
+
+def datestr_n_days_ago(n):
+    date = datetime.now() - timedelta(days=n)
+    return date.isoformat()
 
