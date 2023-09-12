@@ -1,61 +1,89 @@
+#!/bin/bash
 
-# request the postgres password and api key
+initialise_proj() {
 
-echo "Please enter the PostgreSQL password for the 'postgres' user:"
-read -s PGPASSWORD
-export PGPASSWORD
+    # request the postgres password and api key
 
-echo "\nPlease enter the API key from PlanningAlerts.org.au:"
-read -s PLANNINGALERTSKEY
-export PLANNINGALERTSKEY
+    echo "Please enter the PostgreSQL password for the 'postgres' user:"
+    read -s PGPASSWORD
+    export PGPASSWORD
+
+    echo "\nPlease enter the API key from PlanningAlerts.org.au:"
+    read PLANNINGALERTSKEY
+    export PLANNINGALERTSKEY
 
 
-# fix the null values in the Census CSVs encoded as `..`
+    # fix the null values in the Census CSVs encoded as `..` and save in resources/cleaned
 
-mkdir -p resources/cleaned
-for file in ./resources/2021Census*; do
-    [ -e "$file" ] || continue
-    base=$(basename "$file")
-    sed 's/\.\./\\N/g' "$file" > "./resources/cleaned/$base"
+    mkdir -p resources/cleaned
+    for file in ./resources/2021Census*; do
+        [ -e "$file" ] || continue
+        base=$(basename "$file")
+        sed 's/\.\./''/g' "$file" > "./resources/cleaned/$base"
+    done
+
+
+
+    # create the postgres database if it doesn't exist
+
+    DB_NAME=melbournehousingdb
+
+    echo "creating database $DB_NAME..."
+
+    DB_EXISTS=$(psql -h localhost -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_NAME'")
+
+    if [ "$DB_EXISTS" = "1" ];
+    then
+        echo "Database $DB_NAME already exists."
+        echo "Do you want to drop and recreate the database? [Y/n]"
+        read drop
+        if [[ $drop =~ ^([yY])$ ]]; then  
+            echo "Dropping database $DB_NAME..."
+            psql -h localhost -U postgres -c "DROP DATABASE $DB_NAME WITH (FORCE);"
+            echo "Creating database $DB_NAME..."
+            createdb -h localhost -U postgres $DB_NAME
+        else
+            echo "Exiting project set up"
+            exit 1
+        fi
+    else
+        createdb -h localhost -U postgres $DB_NAME
+    fi
+
+    # create the tables
+
+    psql -h localhost -U postgres -d $DB_NAME -f src/schema.sql
+
+    # upload data from CSVs and create joined census view for querying with transforms
+
+    psql -h localhost -U postgres -d $DB_NAME -f src/psql-scripts.sql
+
+    # query some data from api (with status bars) -- pass how many pages 
+
+    # python src/callapi.py
+
+    # cleanup
+
+    unset PGPASSWORD
+}
+
+# check if we skip setup
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --createdb) 
+            initialise_proj
+            shift 
+            ;;
+        *) 
+            echo "Unknown parameter passed: $1"; 
+            exit 1 
+            ;;
+    esac
+    shift
 done
 
 
-# create the postgres database if it doesn't exist
+# run the app
 
-DB_NAME=melbournehousingdb
-
-DB_EXISTS=$(psql -h localhost -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_NAME'")
-
-if [ "$DB_EXISTS" = "1" ];
-then
-    echo "Database $DB_NAME already exists. Exiting." # to handle better, ask to drop and reupload or skip
-    exit 1
-else
-    createdb -h localhost -U postgres $DB_NAME
-fi
-
-# create the tables
-
-psql -h localhost -U postgres -d $DB_NAME -f src/schema.sql
-
-# upload data from CSVs and create joined census view for querying with transforms
-
-psql -h localhost -U postgres -d $DB_NAME -f src/psql-scripts.sql
-
-
-# query some data from api (with status bars)
-
-callapi.py
-
-# start flask app in background process
-
-
-
-# open index.html
-
-
-
-
-# cleanup
-
-unset PGPASSWORD
+# flask run & open index.html

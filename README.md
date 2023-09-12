@@ -76,7 +76,7 @@ You will need to have Postgres and `psql` installed. A `requirements.txt` has be
 
 ## Initialisation
 
-To run the app, run `sh initialise.sh` in terminal from the project root directory. This creates a database `melbournehousingdb` under the `postgres` user, loads census static files in `/resources` to the database, starts the flask webserver to transform and serve this data via scripts in `/src`, and opens up the web page `index.html`. This webpage renders the data via JavaScript also in `/src`.
+To run the app the first time, run `sh initialise.sh --createdb` in terminal from the project root directory. This creates a database `melbournehousingdb` under the `postgres` user, loads census static files in `/resources` to the database, starts the flask webserver to transform and serve this data via scripts in `/src`, and opens up the web page `index.html`. This webpage renders the data via JavaScript also in `/src`. Once the database has been created, you can run `sh initialise.sh` to only start the flask server and open the web page.
 
 ### `/src` scripts
 
