@@ -56,7 +56,7 @@ initialise_proj() {
     python src/credentials.py
 
     # query some data from api (with status bars) -- some number of pages as default
-    python src/callapi.py
+    # python src/callapi.py
 
     # cleanup
     unset PGPASSWORD

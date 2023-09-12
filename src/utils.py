@@ -20,3 +20,9 @@ def datestr_n_days_ago(n):
     date = datetime.now() - timedelta(days=n)
     return date.isoformat()
 
+def generate_li(endpoint_list):
+    li_elements = [f'<li><code><a href = "/api/{x}">{x}</a></code></li>' for x in endpoint_list]
+    li_html = '\n'.join(li_elements)
+    return li_html
+
+    

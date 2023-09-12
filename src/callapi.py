@@ -1,6 +1,6 @@
 # function to call api
 
-# will need to upsert probably
+# will need to upsert probably to avoid dupes?
 
 # easy way to do it is save as csv and then pull in from there
 
@@ -30,7 +30,7 @@ def query_api(lga,page=1):
 page_limit = 40
 age_limit = datestr_n_days_ago(30)
 
-lgas = [] # pull unique list of url_names from database
+lgas = ['moreland_city','mornington_peninsula','manningham'] # for testing, we'll pull a unique list of url_names from database
 
 df = pd.DataFrame()
 
