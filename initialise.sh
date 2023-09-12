@@ -58,9 +58,15 @@ initialise_proj() {
 
     psql -h localhost -U postgres -d $DB_NAME -f src/psql-scripts.sql
 
+    # persist the credentials
+
+    python src/credentials.py
+
     # query some data from api (with status bars) -- pass how many pages 
 
-    # python src/callapi.py
+    #python src/callapi.py
+
+
 
     # cleanup
 
@@ -83,8 +89,7 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-
 # run the app
 
-export FLASK_APP=src/main.py
-flask run & open index.html
+# export FLASK_APP=src/main.py
+# flask run & open index.html

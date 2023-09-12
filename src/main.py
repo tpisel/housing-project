@@ -1,8 +1,11 @@
 from config import endpoints
+import keyring
 import os
 
-os.environ['PLANNINGALERTSKEY']
+PLANNINGALERTSKEY = os.environ['PLANNINGALERTSKEY']
+PGPASSWORD = os.environ['PGPASSWORD']
 
-
+print(PGPASSWORD)
+print(PLANNINGALERTSKEY)
 
 # add transforms etc

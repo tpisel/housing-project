@@ -28,7 +28,8 @@ must use leaflet / plotly and something new
 
 maybe encode in geojson
 
-example API response
+example API response:
+
 
 ```json
 {
@@ -76,15 +77,17 @@ You will need to have Postgres and `psql` installed. A `requirements.txt` has be
 
 ## Initialisation
 
-To run the app the first time, run `sh initialise.sh --createdb` in terminal from the project root directory. This creates a database `melbournehousingdb` under the `postgres` user, loads census static files in `/resources` to the database, starts the flask webserver to transform and serve this data via scripts in `/src`, and opens up the web page `index.html`. This webpage renders the data via JavaScript also in `/src`. Once the database has been created, you can run `sh initialise.sh` to only start the flask server and open the web page.
+To run the app the first time, run `sh initialise.sh --createdb` in terminal from the project root directory. This creates a database `melbournehousingdb` under the `postgres` user, loads census static files in `/resources` to the database, starts the flask webserver to transform and serve this data via scripts in `/src`, and opens up the web page `index.html`. This webpage renders the data via JavaScript also in `/src`. Once the database has been created, you can run `sh initialise.sh` to only start the flask server and open the web page. The script will save and read credentials from your local keyring.
 
 ### `/src` scripts
 
-These are teh scripts 
-
-- ex.py
-- ex.js
-- ex.css
+- `main.py` the flask app that reads data from the database and provides API endpoints
+- `config.py` a configuration file that determines what is exposed from the database
+- `callapi.py` calls the planning alerts api and saves the data in the database
+- `credentials.py` saves credentials on the keyring
+- `utils.py` includes misc. tooling and convenience functions
+- `schema.sql` the database schema
+- `psql-scripts.sql` database commands to upload data and create views for consumption
 
 
 ### `/resources` data
