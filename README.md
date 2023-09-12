@@ -80,6 +80,8 @@ To run the app the first time, run `sh initialise.sh --createdb` in terminal fro
 
 ### `/src` scripts
 
+These are teh scripts 
+
 - ex.py
 - ex.js
 - ex.css
