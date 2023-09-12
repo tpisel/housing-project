@@ -12,4 +12,11 @@
 
 -- create joined census view for querying with transforms
 
-
+CREATE TABLE vic_selected_census AS
+SELECT * -- this bit can be edited to create simple transformed columns
+  FROM local_gov_area
+           LEFT JOIN dwellings_by_bedroom USING (lga_code_2021)
+           LEFT JOIN dwelling_structure USING (lga_code_2021)
+           LEFT JOIN selected_medians USING (lga_code_2021)
+           LEFT JOIN vehicles_per_dwelling USING (lga_code_2021)
+ WHERE LEFT(lga_code_2021, 4) = 'LGA2'

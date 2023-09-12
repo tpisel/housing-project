@@ -81,4 +81,3 @@ done
 # run the app
 export FLASK_APP=src/main.py
 flask run #& open index.html
-open http://127.0.0.1:5000 # just for testing to see the flask routes
