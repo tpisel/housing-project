@@ -1,20 +1,19 @@
 # the main flask app 
 
-
+import pandas as pd
 from config import endpoints
 from utils import get_secret
 from sqlalchemy import create_engine, Table, MetaData
 from flask import Flask, jsonify
-# import pandas as pd
-
-
 
 app = Flask(__name__)
 engine = create_engine(f"postgresql://postgres:{get_secret('postgres')}@localhost/melbournehousingdb")
 
 # i might need to abstract this to orm dynamically across tables
-metadata = MetaData(bind=engine)
-selected_medians = Table('selected_medians', metadata, autoload=True, autoload_with=engine)
+
+metadata = MetaData()
+metadata.bind = engine
+selected_medians = Table('selected_medians', metadata, autoload_with=engine)
 
 @app.route('/')
 def home():
