@@ -7,8 +7,8 @@ from sqlalchemy import create_engine, Table, MetaData, text
 from flask import Flask
 
 app = Flask(__name__)
-engine = create_engine(f"postgresql://postgres:{get_secret('postgres')}@localhost/melbournehousingdb")
 
+engine = create_engine(f"postgresql://postgres:{get_secret('postgres')}@localhost/melbournehousingdb")
 metadata = MetaData()
 metadata.bind = engine
 
@@ -25,7 +25,7 @@ def generate_endpoint(endpoint):
     
     return generated_endpoint
 
-# Generate endpoints
+print('Generating flask API endpoints from config')
 for endpoint in endpoints:
     app.add_url_rule(f'/api/{endpoint["name"]}', endpoint['name'], generate_endpoint(endpoint))
 
@@ -63,7 +63,7 @@ root_menu_dict = root_menu_dict + generated_routes
 
 @app.route('/')
 def homepage():
-    
+
     endpoint_links = generate_li(root_menu_dict)
     
     html = f'''

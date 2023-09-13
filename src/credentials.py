@@ -7,5 +7,7 @@ import keyring
 PLANNINGALERTSKEY = os.environ['PLANNINGALERTSKEY']
 PGPASSWORD = os.environ['PGPASSWORD']
 
+print('\nSaving credentials on the local keychain')
+
 keyring.set_password('planning_alerts', 'api_key', PLANNINGALERTSKEY)
 keyring.set_password('postgresql', 'postgres', PGPASSWORD)
