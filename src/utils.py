@@ -16,9 +16,9 @@ def jsonify_from_result(result_from_execute):
     results_list = [dict(zip(column_names, row)) for row in result_from_execute]
     return jsonify(results_list)
 
-def datestr_n_days_ago(n):
+def date_n_days_ago(n):
     date = datetime.now() - timedelta(days=n)
-    return date.isoformat()
+    return date
 
 def generate_li(endpoint_list):
     li_elements = [f'<li><code><a href = "/api/{x}">{x}</a></code></li>' for x in endpoint_list]

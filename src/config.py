@@ -20,15 +20,20 @@ endpoints = [
             "num_mvs_per_dweling_2_mvs",
             "num_mvs_per_dweling_3_mvs"
             ]
+    },
+    {
+        "name": "planning_applications", 
+        "table": "planning_application",
+        "columns": ["info_url", "comment_url", "date_received"]
     }
-
-    # to come, once I add the api ingest
-
-    # {
-    #     "name": "planning", 
-    #     "table": "planning_application",
-    #     "columns": ["info_url", "comment_url", "date_received"]
-    # }
 ]
 
+# global settings
 
+from utils import date_n_days_ago
+
+parameters = {
+    'api_page_limit': 2, #40, # leave at 2 for testing
+    'api_age_limit': date_n_days_ago(365),
+    'api_wait_s': 0.4
+}
