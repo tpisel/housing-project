@@ -24,19 +24,19 @@ initialise_proj() {
     # create the postgres database if it doesn't exist
     DB_NAME=melbournehousingdb
 
-    echo "creating database $DB_NAME..."
+    echo "\nCreating database $DB_NAME..."
 
     DB_EXISTS=$(psql -h localhost -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_NAME'")
 
     if [ "$DB_EXISTS" = "1" ];
     then
-        echo "Database $DB_NAME already exists."
-        echo "Do you want to drop and recreate the database? [Y/n]"
+        echo "Database $DB_NAME already exists!"
+        echo "\nDo you want to drop and recreate the database? [Y/n]"
         read drop
         if [[ $drop =~ ^([yY])$ ]]; then  
-            echo "Dropping database $DB_NAME..."
+            echo "\nDropping database $DB_NAME..."
             psql -h localhost -U postgres -c "DROP DATABASE $DB_NAME WITH (FORCE);"
-            echo "Creating database $DB_NAME..."
+            echo "\nCreating database $DB_NAME..."
             createdb -h localhost -U postgres $DB_NAME
         else
             echo "Exiting project set up"
@@ -55,7 +55,7 @@ initialise_proj() {
     # persist the credentials so we don't need to ask next time
     python src/credentials.py
 
-    # query some data from api (with status bars) -- some number of pages as default
+    # query some data from api
     python src/callapi.py
 
     # cleanup

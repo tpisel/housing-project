@@ -213,20 +213,3 @@ CREATE TABLE dwellings_by_bedroom
     CONSTRAINT pk_g41lga
         FOREIGN KEY (LGA_CODE_2021) REFERENCES local_gov_area
 );
-
-CREATE TABLE planning_application
-(
-    id BIGINT NOT NULL,
-    council_reference TEXT,
-    date_scraped DATE,
-    address TEXT,
-    description TEXT,
-    info_url TEXT,
-    comment_url TEXT,
-    date_received DATE,
-    on_notice_from DATE,
-    on_notice_to DATE,
-    authority JSON,
-    CONSTRAINT pk_pa
-        PRIMARY KEY (id)
-);

@@ -2,18 +2,15 @@
 
 import pandas as pd
 from config import endpoints
-from utils import get_secret, jsonify_from_result
+from utils import get_secret, jsonify_from_result, generate_li
 from sqlalchemy import create_engine, Table, MetaData, text
 from flask import Flask
 
 app = Flask(__name__)
+
 engine = create_engine(f"postgresql://postgres:{get_secret('postgres')}@localhost/melbournehousingdb")
-
-# i might need to abstract this to orm dynamically across tables
-
 metadata = MetaData()
 metadata.bind = engine
-selected_medians = Table('selected_medians', metadata, autoload_with=engine)
 
 # function to take an endpoint from the config and return the right data
 def generate_endpoint(endpoint):
@@ -28,9 +25,55 @@ def generate_endpoint(endpoint):
     
     return generated_endpoint
 
-# Generate endpoints
+print('Generating flask API endpoints from config')
 for endpoint in endpoints:
     app.add_url_rule(f'/api/{endpoint["name"]}', endpoint['name'], generate_endpoint(endpoint))
+
+###############################################################
+
+# ADD ANY ADDITIONAL ROUTES HERE! (and your transform scripts)
+
+# example to copy
+@app.route('/api/exampleroute')
+def exampleroute():
+    query = 'select * from vic_selected_census limit 1'
+    with engine.connect() as conn:
+        result = conn.execute(text(query))
+        df = pd.DataFrame(result.fetchall(), columns=result.keys())
+        # ADD PANDAS TRANSFORMS HERE
+        return df.to_json(orient='records', date_format='iso')
+
+
+
+
+# ADD YOUR ENDPOINTS HERE to have them show up on the home page:
+
+root_menu_dict = [
+    'exampleroute'
+]
+
+
+
+
+
+###############################################################
+
+generated_routes = [e['name'] for e in endpoints]
+root_menu_dict = root_menu_dict + generated_routes
+
+@app.route('/')
+def homepage():
+
+    endpoint_links = generate_li(root_menu_dict)
+    
+    html = f'''
+    <h1> Planning Application API homepage </h1>
+    <h2> Available endpoints: </h2>
+    <ul>
+        {endpoint_links}
+    </ul>
+    '''
+    return html
 
 
 if __name__ == '__main__':
