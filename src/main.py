@@ -9,11 +9,8 @@ from flask import Flask
 app = Flask(__name__)
 engine = create_engine(f"postgresql://postgres:{get_secret('postgres')}@localhost/melbournehousingdb")
 
-# i might need to abstract this to orm dynamically across tables
-
 metadata = MetaData()
 metadata.bind = engine
-selected_medians = Table('selected_medians', metadata, autoload_with=engine)
 
 # function to take an endpoint from the config and return the right data
 def generate_endpoint(endpoint):

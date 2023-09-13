@@ -26,13 +26,23 @@ def query_api(lga,page=1):
     else:
         print(f"Failed to retrieve data for page {page} of {lga}. HTTP Status code: {response.status_code}")
 
-# loop through endpoints
 
+
+# loop through endpoints
 
 # want to query an endpoint until we hit x pages or go back y days, whichever comes first
 page_limit = 40
 age_limit = datestr_n_days_ago(30)
+
+
+# retrieve list of lgas with 
+
 lgas = ['moreland_city','mornington_peninsula','manningham'] # for testing, we'll later pull a unique list of url_names from database
+
+
+
+
+
 
 combined_df = pd.DataFrame()
 
@@ -42,21 +52,30 @@ for lga in lgas:
     page = 1
 
     while page < page_limit:
-        if (lga_df.date_received.min() < age_limit):
-            break
         page_df = query_api(lga,page)
+
+        #<< add logging for progress and maybe a wait
+
+        #<< concat page_df to lga_df
+
         page = page + 1
+        if (lga_df.date_received.min() < age_limit): # exit loop if we have an old enough record
+            break
+
+    #<< concat lga_df to combined_df
 
 
-    # concat df responses
 
 
 # confirm each row is unique
 
-
+combined_df
 
 
 
 # write data to database
 
 combined_df.to_sql('planning_application', engine, if_exists='replace', index=False)
+
+
+# add 
