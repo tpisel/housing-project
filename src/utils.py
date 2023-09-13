@@ -25,4 +25,9 @@ def generate_li(endpoint_list):
     li_html = '\n'.join(li_elements)
     return li_html
 
+def trim_str(str):
+    if str.startswith('application.'):
+        return str.replace('application.', '', 1)
+    else:
+        return str
     
