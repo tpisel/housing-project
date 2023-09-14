@@ -1,6 +1,7 @@
 import keyring
 from flask import jsonify
 from datetime import datetime, timedelta
+import pandas as pd
 
 def get_secret(secret):
     match secret:
@@ -31,3 +32,10 @@ def trim_str(str):
     else:
         return str
     
+def csv_to_table(csv_path, table_name, engine):
+    df = pd.read_csv(csv_path)
+    df.replace('..', None, inplace=True)
+    df.rename(columns=lambda x: x.lower(), inplace=True)
+    df.to_sql(table_name, engine, if_exists='replace', index=False)
+
+

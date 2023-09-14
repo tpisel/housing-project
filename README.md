@@ -40,13 +40,13 @@ This is an end-to-end data visualisation application that retrieves data from an
 
 ## Pre-requisites
 
-You will need to have Postgres and `psql` installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for your postgres password and an API key from PlanningAlerts. Sign up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
+You will need to have Postgres installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for your postgres password and an API key from PlanningAlerts. Sign up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
 
 
 
 ## Initialisation
 
-To run the app the first time, run `sh initialise.sh --createdb` in terminal from the project root directory. Running this script with the `--createdb` tag:
+To run the app the first time, run `python initialise.py --createdb` in terminal from the project root directory. Running this script with the `--createdb` tag:
 
 1. Requests and saves the credentials for the `postgres` user and PlanningAlerts API key
 2. Creates a database `melbournehousingdb` under the `postgres` user
@@ -55,17 +55,14 @@ To run the app the first time, run `sh initialise.sh --createdb` in terminal fro
 5. Starts the flask webserver to transform and serve this data via API endpoints at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 6. Opens up the web page `index.html` which renders data from the endpoints via JavaScript in `/src`
 
-Once the database has been created, you can run `sh initialise.sh` without the tag to only start the flask server and open the web page.
+Once the database has been created, you can run `python initialise.py` without the tag to only start the flask server and open the web page.
 
 ### `/src` scripts
 
 - `main.py` the flask app that reads data from the database and provides API endpoints
 - `config.py` a configuration file that determines what is exposed from the database
 - `callapi.py` calls the planning alerts api and saves the data in the database
-- `credentials.py` saves credentials on the keyring
 - `utils.py` includes misc. tooling and convenience functions
-- `schema.sql` the database schema
-- `psql-scripts.sql` database commands to upload data and create views for consumption
 
 
 ### `/resources` data
