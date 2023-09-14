@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Activate conda environment (create if it doesn't exist)
+ENV_NAME="housing-project-conda-env"
+
+conda env list | grep -w $ENV_NAME
+if [ $? -eq 1 ]; then
+    conda create -n $ENV_NAME --file requirements.txt
+fi
+
+conda deactivate
+conda activate $ENV_NAME
+
+
 initialise_proj() {
 
     # request the postgres password and api key
