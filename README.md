@@ -40,7 +40,7 @@ This is an end-to-end data visualisation application that retrieves data from an
 
 ## Pre-requisites
 
-You will need to have Postgres and `psql` installed. A `requirements.txt` has been provided in the root directory and will be used to create a conda environment. The first time you run the app, you will be asked for your postgres password and an API key from PlanningAlerts. Sign up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
+You will need to have Postgres and `psql` installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for your postgres password and an API key from PlanningAlerts. Sign up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
 
 
 
@@ -48,13 +48,12 @@ You will need to have Postgres and `psql` installed. A `requirements.txt` has be
 
 To run the app the first time, run `sh initialise.sh --createdb` in terminal from the project root directory. Running this script with the `--createdb` tag:
 
-1. Creates and activates `housing-project-conda-env` from the `requirements.txt`
-2. Requests and saves the credentials for the `postgres` user and PlanningAlerts API key
-3. Creates a database `melbournehousingdb` under the `postgres` user
-4. Cleans and loads census data files in `/resources` to the database
-5. Pulls data from the PlanningAlerts API and loads it to the database
-6. Starts the flask webserver to transform and serve this data via API endpoints at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-7. Opens up the web page `index.html` which renders data from the endpoints via JavaScript in `/src`
+1. Requests and saves the credentials for the `postgres` user and PlanningAlerts API key
+2. Creates a database `melbournehousingdb` under the `postgres` user
+3. Cleans and loads census data files in `/resources` to the database
+4. Pulls data from the PlanningAlerts API and loads it to the database
+5. Starts the flask webserver to transform and serve this data via API endpoints at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+6. Opens up the web page `index.html` which renders data from the endpoints via JavaScript in `/src`
 
 Once the database has been created, you can run `sh initialise.sh` without the tag to only start the flask server and open the web page.
 
