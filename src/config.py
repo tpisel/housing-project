@@ -24,7 +24,7 @@ endpoints = [
     {
         "name": "planning_applications", 
         "table": "planning_application",
-        "columns": ["info_url", "comment_url", "date_received"]
+        "columns": ["info_url", "description", "date_received", "lat", "lng", "lga_fullname"]
     }
 ]
 
