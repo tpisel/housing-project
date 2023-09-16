@@ -1,9 +1,9 @@
 # the main flask app 
 
 import pandas as pd
-from config import endpoints
-from utils import get_secret, jsonify_from_result, generate_li
-from sqlalchemy import create_engine, Table, MetaData, text
+from src.config import endpoints
+from src.utils import get_secret, jsonify_from_result, generate_li
+from sqlalchemy import create_engine, MetaData, text
 from flask import Flask
 
 app = Flask(__name__)
@@ -25,7 +25,6 @@ def generate_endpoint(endpoint):
     
     return generated_endpoint
 
-print('Generating flask API endpoints from config')
 for endpoint in endpoints:
     app.add_url_rule(f'/api/{endpoint["name"]}', endpoint['name'], generate_endpoint(endpoint))
 

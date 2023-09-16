@@ -30,10 +30,10 @@ endpoints = [
 
 # global settings
 
-from utils import date_n_days_ago
+from src.utils import date_n_days_ago
 
 parameters = {
     'api_page_limit': 2, #40, # leave at 2 for testing
     'api_age_limit': date_n_days_ago(365),
-    'api_wait_s': 0.4
+    'api_wait_s': 0.1
 }
