@@ -7,6 +7,7 @@ import webbrowser
 
 from src.utils import csv_to_table, get_secret
 from src.callapi import api_to_db
+
 from src.main import app
 
 
