@@ -37,3 +37,29 @@ WHERE description ~ 'single storey|one storey|1\) storey'
 AND description ~ 'dwelling|residential'
 AND description ~ 'development';
 
+-- Adding in an additional column to mark the dwelling type
+
+ALTER TABLE five_storeys ADD COLUMN storey INT DEFAULT 5;
+ALTER TABLE four_storeys ADD COLUMN storey INT DEFAULT 4;
+ALTER TABLE three_storeys ADD COLUMN storey INT DEFAULT 3;
+ALTER TABLE double_storeys ADD COLUMN storey INT DEFAULT 2;
+ALTER TABLE single_storey ADD COLUMN storey INT DEFAULT 1;
+ALTER TABLE apartments ADD COLUMN storey INT DEFAULT 6;
+
+-- Combining the tables via UNION, for a single table for the API
+
+INSERT INTO single_storey (id, description, lat, lng, lga_fullname, storey)
+SELECT id, description, lat, lng, lga_fullname, storey
+FROM double_storeys
+UNION
+SELECT id, description, lat, lng, lga_fullname, storey
+FROM three_storeys
+UNION
+SELECT id, description, lat, lng, lga_fullname, storey
+FROM four_storeys
+UNION
+SELECT id, description, lat, lng, lga_fullname, storey
+FROM five_storeys
+UNION
+SELECT id, description, lat, lng, lga_fullname, storey
+FROM apartments;

@@ -64,14 +64,14 @@ endpoints = [
             "Unoccupied_PDs_Psns",
             "Total_PDs_Persons",
             "Total_Total"
-
             ]
     },
 
     {
         "name": "planning_applications", 
         "table": "planning_application",
-        "columns": ["info_url", 
+        "columns": ["id",
+                    "info_url", 
                     "description", 
                     "date_received", 
                     "lat", 
@@ -80,64 +80,15 @@ endpoints = [
     },
     
     {
-        "name": "double_storey", 
-        "table": "double_storey",
-        "columns": [
-            "id", 
-            "description", 
-            "lat", 
-            "lng", 
-            "lga_fullname"]
-    },
-      {
-        "name": "three_storeys", 
-        "table": "three_storeys",
-        "columns": [
-            "id", 
-            "description", 
-            "lat", 
-            "lng", 
-            "lga_fullname"]
-    },
-      {
-        "name": "four_storeys", 
-        "table": "four_storeys",
-        "columns": [
-            "id", 
-            "description", 
-            "lat", 
-            "lng", 
-            "lga_fullname"]
-    },
-      {
-        "name": "five_storeys", 
-        "table": "five_storeys",
-        "columns": [
-            "id", 
-            "description", 
-            "lat", 
-            "lng", 
-            "lga_fullname"]
-    },
-    {
-        "name": "apartments", 
-        "table": "apartments",
-        "columns": [
-            "id", 
-            "description", 
-            "lat", 
-            "lng", 
-            "lga_fullname"]
-    },
-    {
-        "name": "single_storey", 
+        "name": "cleaned_planning_applications", 
         "table": "single_storey",
         "columns": [
             "id", 
-            "description", 
+            "description",
             "lat", 
             "lng", 
-            "lga_fullname"]
+            "lga_fullname",
+            "storey"]
     }
 ]
 
