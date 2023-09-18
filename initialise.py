@@ -7,7 +7,7 @@ import webbrowser
 
 from src.utils import csv_to_table, get_secret
 from src.callapi import api_to_db
-
+from src.ctas import run_ctas
 from src.main import app
 
 
@@ -72,25 +72,11 @@ def initialise():
     csv_to_table('./resources/2021Census_G36_VIC_LGA.csv','dwelling_structure',engine)
     csv_to_table('./resources/2021Census_G41_VIC_LGA.csv','dwellings_by_bedroom',engine)
 
-    # new summary table
-
-    ctas_string = '''
-    CREATE TABLE vic_selected_census AS
-    SELECT * -- this bit can be edited to create simple transformed columns
-    FROM local_gov_area
-        LEFT JOIN dwellings_by_bedroom USING (lga_code_2021)
-        LEFT JOIN dwelling_structure USING (lga_code_2021)
-        LEFT JOIN selected_medians USING (lga_code_2021)
-        LEFT JOIN vehicles_per_dwelling USING (lga_code_2021)
-    WHERE LEFT(lga_code_2021, 4) = 'LGA2'
-    '''
-
-    with engine.connect() as connection:
-        result = connection.execute(text(ctas_string))
-        connection.commit()
-
     # download from api
     api_to_db()
+
+    # create summary tables and view
+    run_ctas(engine)
 
     # start app
     start_app()
