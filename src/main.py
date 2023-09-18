@@ -45,12 +45,28 @@ def exampleroute():
 
 
 
+# N PER STOREY/COUNCIL
+
+
+@app.route('/api/nstories')
+def nstories():
+    query = 'select lga_fullname, storey, count(*) as applications from all_storey group by 1, 2'
+    with engine.connect() as conn:
+        result = conn.execute(text(query))
+        df = pd.DataFrame(result.fetchall(), columns=result.keys())
+        # ADD PANDAS TRANSFORMS HERE
+        return df.to_json(orient='records', date_format='iso')
+
+
+
+
+
 # ADD YOUR ENDPOINTS HERE to have them show up on the home page:
 
 root_menu_dict = [
-    'exampleroute'
+    'exampleroute',
+    'nstories'
 ]
-
 
 
 
