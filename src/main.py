@@ -60,7 +60,7 @@ def exampleroute():
 
 @app.route('/api/nstories')
 def nstories():
-    query = 'select lga_fullname, storey, count(*) as applications from all_storey group by 1, 2, 3, 4, 5, 6'
+    query = 'select lga_fullname, storey, count(*) as applications from all_storey group by 1, 2, 3, 4'
     with engine.connect() as conn:
         result = conn.execute(text(query))
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
