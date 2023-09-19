@@ -83,8 +83,8 @@ def initialise():
     
 def start_app():
     app.run()
-    webbrowser.open('http://127.0.0.1:5000/')
-    webbrowser.open('index.html')
+    # webbrowser.open('http://127.0.0.1:5000/')
+    # webbrowser.open('index.html')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Initialise the database.')
