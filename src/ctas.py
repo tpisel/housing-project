@@ -34,27 +34,6 @@ def run_ctas(engine):
     FROM planning_application
     WHERE description ~ 'three storey|three storey|3\) storey'
     AND description ~ 'dwelling|residential';
-    '''
-    '''
-    CREATE VIEW four_storeys AS
-    SELECT id, description, lat, lng, lga_fullname, 4 as storey
-    FROM planning_application
-    WHERE description ~ 'four storey|4\) storey'
-    AND description ~ 'dwelling|residential';
-    ''',
-    '''
-    CREATE VIEW five_storeys AS
-    SELECT id, description, lat, lng, lga_fullname, 5 as storey
-    FROM planning_application
-    WHERE description ~ 'five storey|5\) storey'
-    AND description ~ 'dwelling|residential';
-    ''',
-    '''
-    CREATE VIEW apartments AS
-    SELECT id, description, lat, lng, lga_fullname, 6 as storey
-    FROM planning_application
-    WHERE description ~ 'apartment'
-    AND description ~ 'dwelling|residential';
     ''',
     '''
     CREATE VIEW single_storey AS
@@ -64,6 +43,26 @@ def run_ctas(engine):
     AND description ~ 'dwelling|residential'
     AND description ~ 'development';
     ''',
+    '''
+
+    CREATE VIEW combined_view AS
+    SELECT id, description, lat, lng, lga_fullname, 5 as storey
+    FROM planning_application
+    WHERE description ~ 'five storey|5\) storey'
+    AND description ~ 'dwelling|residential'
+    UNION
+    SELECT id, description, lat, lng, lga_fullname, 6 as storey
+    FROM planning_application
+    WHERE description ~ 'apartment'
+    AND description ~ 'dwelling|residential';
+    UNION
+    CREATE VIEW four_storeys AS
+    SELECT id, description, lat, lng, lga_fullname, 4 as storey
+    FROM planning_application
+    WHERE description ~ 'four storey|4\) storey'
+    AND description ~ 'dwelling|residential';
+    ''',
+    
     '''
     CREATE VIEW all_storey AS
     SELECT id, description, lat, lng, lga_fullname, storey
