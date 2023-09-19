@@ -8,7 +8,6 @@ def run_ctas(engine):
     def execute_sql(query):
             with engine.connect() as connection:
                 result = connection.execute(text(query))
-                connection.commit()
 
     query_list = [
     '''
