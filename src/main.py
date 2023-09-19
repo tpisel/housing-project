@@ -43,24 +43,14 @@ def exampleroute():
         return df.to_json(orient='records', date_format='iso')
 
 
-# example to copy
-@app.route('/api/transformed_census_dwellings')
-def exampleroute():
-    query = 'select * from vic_selected_census limit 1'
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        df = pd.DataFrame(result.fetchall(), columns=result.keys())
-        # ADD PANDAS TRANSFORMS HERE
-        return df.to_json(orient='records', date_format='iso')
-    
-    
+
 
 # N PER STOREY/COUNCIL
 
 
 @app.route('/api/nstories')
 def nstories():
-    query = 'select lga_fullname, storey, count(*) as applications from all_storey group by 1, 2, 3, 4'
+    query = 'select lga_fullname, storey, count(*) as applications from all_storey group by 1, 2'
     with engine.connect() as conn:
         result = conn.execute(text(query))
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
