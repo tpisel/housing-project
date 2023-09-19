@@ -62,7 +62,71 @@ def run_ctas(engine):
     WHERE description ~ 'four storey|4\) storey'
     AND description ~ 'dwelling|residential';
     ''',
-    
+        '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_separate_house_dwellings +
+	opds_sd_r_t_h_th_1_sty_dwgs +
+	opds_flt_apt_att_house_ds
+) as "Single Storey Total",
+from vic_selected_census;
+
+    ''',
+    '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_sd_r_t_h_th_2_m_sty_dwgs
+	opds_f_ap_i_1or2_sty_blk_ds
+) as "Two Storey Total",
+from vic_selected_census;
+
+    ''',
+     '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_f_ap_i_3_sty_blk_dwgs
+	opds_f_ap_i_1or2_sty_blk_ds
+) as "Three Storey Total",
+from vic_selected_census;
+
+    ''',
+         '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_f_ap_i_4to8_sty_blk_ds
+	opds_f_ap_i_9_m_sty_blk_ds
+) as "Four Storey and Above Storey Total",
+from vic_selected_census;
+'''
+    ''',
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_separate_house_people +
+	opds_sd_r_t_h_th_1_sty_psns +
+	opds_flt_apt_att_house_ps
+) as "Single Storey People Total",
+from vic_selected_census;
+
+    ''',
+    '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_sd_r_t_h_th_2_m_sty_psns
+	opds_f_ap_i_1or2_sty_blk_ps
+) as "Two Storey Total",
+from vic_selected_census;
+
+    ''',
+     '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_f_ap_i_3_sty_blk_psns
+	opds_f_ap_i_1or2_sty_blk_ps
+) as "Three Storey Total",
+from vic_selected_census;
+
+    ''',
+         '''
+    CREATE VIEW dwellings as SELECT lga_code_2021, (
+	opds_f_ap_i_4to8_sty_blk_ps
+	opds_f_ap_i_9_m_sty_blk_ps
+) as "Four Storey and Above Storey Total",
+from vic_selected_census;
+
+    ''',
     '''
     CREATE VIEW all_storey AS
     SELECT id, description, lat, lng, lga_fullname, storey
@@ -80,7 +144,8 @@ def run_ctas(engine):
     SELECT id, description, lat, lng, lga_fullname, storey
     FROM apartments;
     '''
-    
+
+
     ]
 
     for query in query_list: execute_sql(query)
