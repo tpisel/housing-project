@@ -1,9 +1,9 @@
 
 ALTER TABLE planning_application
 ADD COLUMN LGAIDs 
-       WHEN lga_fullname = "bayside_vic" THEN 'LGA20910'
-        WHEN lga_fullname = "melbourne_city" THEN 'LGA24600'
-        WHEN lga_fullname = "city_of_port_phillip"  THEN 'LGA25900'
+    WHEN lga_fullname = "bayside_vic" THEN 'LGA20910'
+     WHEN lga_fullname = "melbourne_city" THEN 'LGA24600'
+   WHEN lga_fullname = "city_of_port_phillip"  THEN 'LGA25900'
      WHEN lga_fullname = "greater_dandenong" THEN 'LGA22670'
      WHEN lga_fullname = "kingston" THEN 'LGA23430'
      WHEN lga_fullname = "boroondara_city" THEN 'LGA21110'
@@ -25,11 +25,11 @@ ADD COLUMN LGAIDs
      WHEN lga_fullname = "monash" THEN 'LGA24970'
      WHEN lga_fullname = "moonee_valley" THEN 'LGA25060'
      WHEN lga_fullname = "mornington_peninsula" THEN 'LGA25340'
-     WHEN lga_fullname = "whitehorse" THEN 'LGA27070'
+     WHEN lga_fullname = "whitehorse" THEN 'LGA26980'
      WHEN lga_fullname = "wyndham" THEN 'LGA27260'
-     WHEN lga_fullname = "yarra_city" THEN 'LGA27070'
+     WHEN lga_fullname = "yarra_city" THEN 'LGA27350'
      WHEN lga_fullname = "yarra_ranges" THEN 'LGA27450'
-     WHEN lga_fullname = "glen_eira" THEN 'LGA27070'
+     WHEN lga_fullname = "glen_eira" THEN 'LGA22310'
      WHEN lga_fullname = "nillumbik" THEN 'LGA25710'
      WHEN lga_fullname = "latrobe" THEN 'LGA23810'
      ELSE lga_fullname = "lga_fullname"
