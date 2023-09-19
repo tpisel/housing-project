@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, text
 def run_ctas(engine):
 
     query_list = '''
+
     CREATE VIEW vic_selected_census AS
     SELECT * -- this bit can be edited to create simple transformed columns
     FROM local_gov_area
@@ -24,25 +25,7 @@ def run_ctas(engine):
     CREATE VIEW three_storeys AS
     SELECT id, description, lat, lng, lga_fullname, 3 as storey
     FROM planning_application
-    WHERE description ~ 'three storey|3\) storey'
-    AND description ~ 'dwelling|residential';
-
-    CREATE VIEW four_storeys AS
-    SELECT id, description, lat, lng, lga_fullname, 4 as storey
-    FROM planning_application
-    WHERE description ~ 'four storey|4\) storey'
-    AND description ~ 'dwelling|residential';
-
-    CREATE VIEW five_storeys AS
-    SELECT id, description, lat, lng, lga_fullname, 5 as storey
-    FROM planning_application
-    WHERE description ~ 'five storey|5\) storey'
-    AND description ~ 'dwelling|residential';
-
-    CREATE VIEW apartments AS
-    SELECT id, description, lat, lng, lga_fullname, 6 as storey
-    FROM planning_application
-    WHERE description ~ 'apartment'
+    WHERE description ~ 'triple storey|three storey|3\) storey'
     AND description ~ 'dwelling|residential';
 
     CREATE VIEW single_storey AS
@@ -52,23 +35,76 @@ def run_ctas(engine):
     AND description ~ 'dwelling|residential'
     AND description ~ 'development';
 
+    CREATE VIEW combined_view AS
+    SELECT id, description, lat, lng, lga_fullname, 5 as storey
+    FROM planning_application
+    WHERE description ~ 'five storey|5\) storey'
+    AND description ~ 'dwelling|residential'
+    UNION
+    SELECT id, description, lat, lng, lga_fullname, 6 as storey
+    FROM planning_application
+    WHERE description ~ 'apartment'
+    AND description ~ 'dwelling|residential'
+    UNION
+    SELECT id, description, lat, lng, lga_fullname, 4 as storey
+    FROM planning_application
+    WHERE description ~ 'four storey|4\) storey'
+    AND description ~ 'dwelling|residential';
+
     CREATE VIEW all_storey AS
-    SELECT id, description, lat, lng, lga_fullname, storey
-    FROM double_storeys
+    SELECT id, description, lat, lng, lga_fullname, 1 AS storey
+    FROM planning_application
+    WHERE description ~ 'single storey|one storey|1\) storey'
+    AND description ~ 'dwelling|residential'
+    AND description ~ 'development'
     UNION
-    SELECT id, description, lat, lng, lga_fullname, storey
-    FROM three_storeys
+    SELECT id, description, lat, lng, lga_fullname, 2 AS storey
+    FROM planning_application
+    WHERE description ~ 'double storey|two storey|2\) storey'
+    AND description ~ 'dwelling|residential'
     UNION
-    SELECT id, description, lat, lng, lga_fullname, storey
-    FROM four_storeys
+    SELECT id, description, lat, lng, lga_fullname, 3 AS storey
+    FROM planning_application
+    WHERE description ~ 'triple storey|three storey|3\) storey'
+    AND description ~ 'dwelling|residential'
     UNION
-    SELECT id, description, lat, lng, lga_fullname, storey
-    FROM five_storeys
+    SELECT id, description, lat, lng, lga_fullname, 4 AS storey
+    FROM planning_application
+    WHERE description ~ 'four storey|4\) storey'
+    AND description ~ 'dwelling|residential'
     UNION
-    SELECT id, description, lat, lng, lga_fullname, storey
-    FROM apartments;
+    SELECT id, description, lat, lng, lga_fullname, 5 AS storey
+    FROM planning_application
+    WHERE description ~ 'five storey|5\) storey'
+    AND description ~ 'dwelling|residential'
+    UNION
+    SELECT id, description, lat, lng, lga_fullname, 6 AS storey
+    FROM planning_application
+    WHERE description ~ 'apartment'
+    AND description ~ 'dwelling|residential';
+
+    CREATE VIEW dwellings AS
+    SELECT lga_code_2021,
+        (
+                opds_separate_house_dwellings +
+                opds_sd_r_t_h_th_1_sty_dwgs +
+                opds_flt_apt_att_house_ds
+            ) AS "Single Storey Total",
+        (
+                opds_sd_r_t_h_th_2_m_sty_dwgs +
+                opds_f_ap_i_1or2_sty_blk_ds
+            ) AS "Two Storey Total",
+        (
+                opds_f_ap_i_3_sty_blk_dwgs +
+                opds_f_ap_i_1or2_sty_blk_ds
+            ) AS "Three Storey Total",
+        (
+                opds_f_ap_i_4to8_sty_blk_ds +
+                opds_f_ap_i_9_m_sty_blk_ds
+            ) AS "Four Storey and Above Storey Total"
+    FROM vic_selected_census;
+
     '''
-    
 
     # for query in query_list: execute_sql(query)
 
