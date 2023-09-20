@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melbourne council planning map</title>
-
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-crossorigin="" />
-
-<!-- Our CSS -->
-<link rel="stylesheet" type="text/css" href="src/style.css">
+    <title>Housing Project</title>
+    <!-- D3 library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
+     <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css">
+    <script src="https://unpkg.com/leaflet-extra-markers/dist/js/leaflet.extra-markers.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- HighChart -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>    
+    <style>
+        body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; font-family: Arial, sans-serif; }
+        header { text-align: center; padding: 50px; background-color: #cac5c5; color: #160303; }
+        .content { display: flex; flex-wrap: wrap; }
+        #map { flex: 1; min-height: 700px; padding: 10px; width: 100%; }
+        .chart-container { flex: 1; min-height: 700px; padding: 10px; box-sizing: border-box; }
+        .chart { min-height: 50%; width: 75%; }
+    </style>
 </head>
-
 <body>
+    <header>
+        <h1>Housing Project Visulization</h1>
+        <p>Welcome to our interactive map and charts!</p>
+    </header>
 
-<!-- The div that holds our map -->
-<div id="map"></div>
-<!-- lodash for groupby etc -->
-<!-- <script src="lodash.js"></script> -->
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-crossorigin=""></script>
-<!-- D3 JavaScript -->
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<!-- Our JavaScript -->
-<script type="text/javascript" src="src/melbournelgas.js"></script>
-<!-- <script type="text/javascript" src="LGA_marksers.js"></script> -->
-    
-
+    <div class="content">
+        <div id="map"></div>
+        <div class="chart-container">
+            <div id="highChart1" class="chart"></div>
+            <div id="highChart2" class="chart"></div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="src/data.js"></script> -->
+    <script src="src/script.js"></script>
 </body>
 </html>
