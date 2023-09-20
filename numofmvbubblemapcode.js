@@ -14,25 +14,27 @@ for (let i = 0; i < Number_of_motor_vehicles_per_dwelling.length; i++) {
   // Conditionals for Number of motor vehicles per dwelling
   let color = "";
   if (Num_MVs_per_dweling_0_MVs[i].LGA_CODE_2021 = 0) {
-    color = "yellow";
+    var randomColor = require('randomcolor');
   }
   else if (Num_MVs_per_dweling_1_MVs[i].LGA_CODE_2021 = 1) {
-    color = "blue";
+    var randomColor = require('randomcolor');
   }
   else if (Num_MVs_per_dweling_2_MVs[i].LGA_CODE_2021 = 2) {
-    color = "green";
+    var randomColor = require('randomcolor');
   }
   else if (Num_MVs_per_dweling_3_MVs[i].LGA_CODE_2021 =3) {
-    color = "orange";
+    var randomColor = require('randomcolor');
   }
   else if (Num_MVs_per_dweling_4mo_MVs[i].LGA_CODE_2021 <= 4) {
-    color = "red";
+    var randomColor = require('randomcolor');
   }
   else{
-    color = "violet";
+    var randomColor = require('randomcolor');
   }
     
-}
+  }
+    
+
 
     // Define a markerSize() function that will give each city a different radius based on its population.
     function markerSize(Number_of_motor_vehicles_per_dwelling) {
@@ -48,4 +50,4 @@ for (let i = 0; i < Number_of_motor_vehicles_per_dwelling.length; i++) {
     radius: Math.sqrt(Number_of_motor_vehicles_per_dwelling[i].LGA_CODE_2021) * 5
   }).bindPopup(`<h1>${Number_of_motor_vehicles_per_dwelling[i].LGA_CODE_2021}</h1> <hr> <h3> Number of motor vehicles</h3>`
   )
-  
+
