@@ -1,0 +1,494 @@
+[
+ {
+   "LGA_CODE_2021": "LGA20110",
+   "Median_tot_fam_inc_weekly": 1769,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA20260",
+   "Median_tot_fam_inc_weekly": 1651,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA20570",
+   "Median_tot_fam_inc_weekly": 1871,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA20660",
+   "Median_tot_fam_inc_weekly": 2521,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA20740",
+   "Median_tot_fam_inc_weekly": 1485,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA20830",
+   "Median_tot_fam_inc_weekly": 1874,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA20910",
+   "Median_tot_fam_inc_weekly": 3361,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA21010",
+   "Median_tot_fam_inc_weekly": 1548,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA21110",
+   "Median_tot_fam_inc_weekly": 3186,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA21180",
+   "Median_tot_fam_inc_weekly": 1674,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.9
+ },
+ {
+   "LGA_CODE_2021": "LGA21270",
+   "Median_tot_fam_inc_weekly": 1468,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA21370",
+   "Median_tot_fam_inc_weekly": 1630,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA21450",
+   "Median_tot_fam_inc_weekly": 2097,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.8
+ },
+ {
+   "LGA_CODE_2021": "LGA21610",
+   "Median_tot_fam_inc_weekly": 2045,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 3.1
+ },
+ {
+   "LGA_CODE_2021": "LGA21670",
+   "Median_tot_fam_inc_weekly": 1260,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.1
+ },
+ {
+   "LGA_CODE_2021": "LGA21750",
+   "Median_tot_fam_inc_weekly": 1721,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA21830",
+   "Median_tot_fam_inc_weekly": 1669,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA21890",
+   "Median_tot_fam_inc_weekly": 2369,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA22110",
+   "Median_tot_fam_inc_weekly": 1417,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA22170",
+   "Median_tot_fam_inc_weekly": 2098,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA22250",
+   "Median_tot_fam_inc_weekly": 1417,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA22310",
+   "Median_tot_fam_inc_weekly": 2806,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA22410",
+   "Median_tot_fam_inc_weekly": 1599,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA22490",
+   "Median_tot_fam_inc_weekly": 2125,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.9
+ },
+ {
+   "LGA_CODE_2021": "LGA22620",
+   "Median_tot_fam_inc_weekly": 1865,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA22670",
+   "Median_tot_fam_inc_weekly": 1605,
+   "Average_num_psns_per_bedroom": 1,
+   "Average_household_size": 2.9
+ },
+ {
+   "LGA_CODE_2021": "LGA22750",
+   "Median_tot_fam_inc_weekly": 2051,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA22830",
+   "Median_tot_fam_inc_weekly": 1759,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA22910",
+   "Median_tot_fam_inc_weekly": 1697,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA22980",
+   "Median_tot_fam_inc_weekly": 1569,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA23110",
+   "Median_tot_fam_inc_weekly": 2453,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA23190",
+   "Median_tot_fam_inc_weekly": 1850,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA23270",
+   "Median_tot_fam_inc_weekly": 1852,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 3.1
+ },
+ {
+   "LGA_CODE_2021": "LGA23350",
+   "Median_tot_fam_inc_weekly": 1954,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA23430",
+   "Median_tot_fam_inc_weekly": 2406,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA23670",
+   "Median_tot_fam_inc_weekly": 2194,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.7
+ },
+ {
+   "LGA_CODE_2021": "LGA23810",
+   "Median_tot_fam_inc_weekly": 1679,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA23940",
+   "Median_tot_fam_inc_weekly": 1394,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA24130",
+   "Median_tot_fam_inc_weekly": 2403,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.7
+ },
+ {
+   "LGA_CODE_2021": "LGA24210",
+   "Median_tot_fam_inc_weekly": 2252,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.7
+ },
+ {
+   "LGA_CODE_2021": "LGA24250",
+   "Median_tot_fam_inc_weekly": 1705,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA24330",
+   "Median_tot_fam_inc_weekly": 2494,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA24410",
+   "Median_tot_fam_inc_weekly": 2306,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.6
+ },
+ {
+   "LGA_CODE_2021": "LGA24600",
+   "Median_tot_fam_inc_weekly": 2368,
+   "Average_num_psns_per_bedroom": 1,
+   "Average_household_size": 1.8
+ },
+ {
+   "LGA_CODE_2021": "LGA24650",
+   "Median_tot_fam_inc_weekly": 2051,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 3.1
+ },
+ {
+   "LGA_CODE_2021": "LGA24780",
+   "Median_tot_fam_inc_weekly": 1700,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA24850",
+   "Median_tot_fam_inc_weekly": 2012,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.7
+ },
+ {
+   "LGA_CODE_2021": "LGA24900",
+   "Median_tot_fam_inc_weekly": 1505,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA24970",
+   "Median_tot_fam_inc_weekly": 2223,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.7
+ },
+ {
+   "LGA_CODE_2021": "LGA25060",
+   "Median_tot_fam_inc_weekly": 2625,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA25150",
+   "Median_tot_fam_inc_weekly": 2127,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.6
+ },
+ {
+   "LGA_CODE_2021": "LGA25250",
+   "Median_tot_fam_inc_weekly": 2403,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA25340",
+   "Median_tot_fam_inc_weekly": 2054,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA25430",
+   "Median_tot_fam_inc_weekly": 1702,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA25490",
+   "Median_tot_fam_inc_weekly": 1916,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA25620",
+   "Median_tot_fam_inc_weekly": 1713,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA25710",
+   "Median_tot_fam_inc_weekly": 2772,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.9
+ },
+ {
+   "LGA_CODE_2021": "LGA25810",
+   "Median_tot_fam_inc_weekly": 1496,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA25900",
+   "Median_tot_fam_inc_weekly": 3052,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 1.9
+ },
+ {
+   "LGA_CODE_2021": "LGA25990",
+   "Median_tot_fam_inc_weekly": 1419,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA26080",
+   "Median_tot_fam_inc_weekly": 1960,
+   "Average_num_psns_per_bedroom": 0.6,
+   "Average_household_size": 2
+ },
+ {
+   "LGA_CODE_2021": "LGA26170",
+   "Median_tot_fam_inc_weekly": 1651,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA26260",
+   "Median_tot_fam_inc_weekly": 1684,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA26350",
+   "Median_tot_fam_inc_weekly": 3299,
+   "Average_num_psns_per_bedroom": 0.9,
+   "Average_household_size": 2.1
+ },
+ {
+   "LGA_CODE_2021": "LGA26430",
+   "Median_tot_fam_inc_weekly": 1580,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA26490",
+   "Median_tot_fam_inc_weekly": 2441,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.6
+ },
+ {
+   "LGA_CODE_2021": "LGA26610",
+   "Median_tot_fam_inc_weekly": 1721,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.5
+ },
+ {
+   "LGA_CODE_2021": "LGA26670",
+   "Median_tot_fam_inc_weekly": 1658,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA26700",
+   "Median_tot_fam_inc_weekly": 1771,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA26730",
+   "Median_tot_fam_inc_weekly": 1891,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA26810",
+   "Median_tot_fam_inc_weekly": 1661,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.3
+ },
+ {
+   "LGA_CODE_2021": "LGA26890",
+   "Median_tot_fam_inc_weekly": 1651,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA26980",
+   "Median_tot_fam_inc_weekly": 2300,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.6
+ },
+ {
+   "LGA_CODE_2021": "LGA27070",
+   "Median_tot_fam_inc_weekly": 1970,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.9
+ },
+ {
+   "LGA_CODE_2021": "LGA27170",
+   "Median_tot_fam_inc_weekly": 1938,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.4
+ },
+ {
+   "LGA_CODE_2021": "LGA27260",
+   "Median_tot_fam_inc_weekly": 2129,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 3.1
+ },
+ {
+   "LGA_CODE_2021": "LGA27350",
+   "Median_tot_fam_inc_weekly": 3138,
+   "Average_num_psns_per_bedroom": 1,
+   "Average_household_size": 2
+ },
+ {
+   "LGA_CODE_2021": "LGA27450",
+   "Median_tot_fam_inc_weekly": 2203,
+   "Average_num_psns_per_bedroom": 0.8,
+   "Average_household_size": 2.7
+ },
+ {
+   "LGA_CODE_2021": "LGA27630",
+   "Median_tot_fam_inc_weekly": 1491,
+   "Average_num_psns_per_bedroom": 0.7,
+   "Average_household_size": 2.1
+ },
+ {
+   "LGA_CODE_2021": "LGA29399",
+   "Median_tot_fam_inc_weekly": 1766,
+   "Average_num_psns_per_bedroom": 1,
+   "Average_household_size": 2.2
+ },
+ {
+   "LGA_CODE_2021": "LGA29499",
+   "Median_tot_fam_inc_weekly": 0,
+   "Average_num_psns_per_bedroom": 0,
+   "Average_household_size": 0
+ },
+ {
+   "LGA_CODE_2021": "LGA29799",
+   "Median_tot_fam_inc_weekly": 0,
+   "Average_num_psns_per_bedroom": 0,
+   "Average_household_size": 0
+ }
+]
