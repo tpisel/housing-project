@@ -10,7 +10,7 @@ let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(myMap);
 
 // Load the GeoJSON data for the LGA mapping area.
-//let link = "https://data.gov.au/geoserver/vic-local-government-areas-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_bdf92691_c6fe_42b9_a0e2_a4cd716fa811&outputFormat=json";
+let link = "https://data.gov.au/geoserver/vic-local-government-areas-psma-administrative-boundaries/wfs?request=GetFeature&typeName=ckan_bdf92691_c6fe_42b9_a0e2_a4cd716fa811&outputFormat=json";
 
 // Generate a random RGB color
 function getRandomColor() {
@@ -35,8 +35,10 @@ function getRandomColorArray(numColors) {
 const randomColors = getRandomColorArray(6);
 
 // Get the data from geojson js file.
-const data = geoJSON[0];
+//const data = geoJSON[0];
 
+// Get the data with d3.
+d3.json(link).then(function(data) {
 // Add GeoJSON data to the map
 L.geoJson(data, {
     style: function(feature) {
@@ -58,6 +60,7 @@ L.geoJson(data, {
         layer.bindPopup("<h3>" + feature.properties.lga_pid + "</h3> <hr> <h5>" + feature.properties.vic_lga__2 + "</h5>");
     }
 }).addTo(myMap);
+});
 
 // Initialize the charts
 const chart1 = Highcharts.chart('highChart1', {
