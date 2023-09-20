@@ -5,8 +5,10 @@ from src.config import endpoints
 from src.utils import get_secret, jsonify_from_result, generate_li
 from sqlalchemy import create_engine, MetaData, text
 from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app)
 
 engine = create_engine(f"postgresql://postgres:{get_secret('postgres')}@localhost/melbournehousingdb")
 metadata = MetaData()
@@ -50,7 +52,16 @@ def exampleroute():
 
 @app.route('/api/nstories')
 def nstories():
-    query = 'select lga_fullname, storey, count(*) as applications from all_storey group by 1, 2'
+    query = 'select (select census_name_2021 from vic_selected_census where url_fullname = lga_fullname), lga_fullname, storey, count(*) as applications from all_storey group by 1, 2, 3'
+    with engine.connect() as conn:
+        result = conn.execute(text(query))
+        df = pd.DataFrame(result.fetchall(), columns=result.keys())
+        # ADD PANDAS TRANSFORMS HERE
+        return df.to_json(orient='records', date_format='iso')
+
+@app.route('/api/dwellings')
+def dwellings():
+    query = 'SELECT lga_code_2021, (select census_name_2021 from vic_selected_census where lga_code_2021 = dwellings.lga_code_2021), "Single Storey Total", "Two Storey Total", "Three Storey Total", "Four Storey and Above Storey Total" FROM dwellings'
     with engine.connect() as conn:
         result = conn.execute(text(query))
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
@@ -59,13 +70,12 @@ def nstories():
 
 
 
-
-
 # ADD YOUR ENDPOINTS HERE to have them show up on the home page:
 
 root_menu_dict = [
     'exampleroute',
-    'nstories'
+    'nstories',
+    'dwellings'
 ]
 
 
