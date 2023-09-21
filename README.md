@@ -11,31 +11,18 @@ Monash data bootcamp project 3
 
 ## Topic 
 
-// **Mapping planning applications** / to expand on intro here
+// Mapping planning applications, housing and cars
 
 ![](img/header.jpg)
 
 
-idea is to have all the LGAs in melbourne, and overlay census data and planning permits
-
-maybe allow zooming in when an LGA is selected and regex / filtering on descriptions
-
-Could color / tag them based on content, see example in `Week 15 / 3 / 02-Stu_CitiBike_Leaflet`
-
-some kind of time series perhaps, each json object has a timestamp attached to it
-
-must use leaflet / plotly and something new 
-
-
-For inspiration: [Housing density in Melbourne](https://chartingtransport.com/2023/06/10/how-is-population-density-changing-in-australian-cities-2023-update/)
+We will investigate all the LGAs in Melbourne, and overlay census data and planning permits, allowing for zoom into an LGA on an interactive map which, when clicked, refreshes the charts to reflect the targetted LGA information.
+We have used Leaflet, Highcharts (not covered in class materials), Python, CSS, SQL.
 
 
 ## Architecture
 
 This is an end-to-end data visualisation application that retrieves data from an API, combines it with existing data sources, exposes the combined data via API endpoints, and enables it to be visualised with an interactive front-end.
-
-
-// put a diagram in here 
 
 
 ## Pre-requisites
@@ -77,8 +64,21 @@ Data from the [2021 Census](https://www.abs.gov.au/census/find-census-data/datap
 
 As the column names in these files are are abbreviated, a reference document with longer column names is included in `cell_descriptors.csv`
 
-## Disclaimer
+Data from the PlanningApplications API: https://www.planningalerts.org.au/api/howto
+This data is collected by their API, and is free to the public for non-commercial use.
 
-_disclaimer about external resources used_
+GeoScape LGA data: Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0)
+**This dataset was originally found on data.gov.au "VIC Local Government Areas - Geoscape Administrative Boundaries". Please visit the source to access the original metadata of the dataset:
+https://data.gov.au/data/dataset/bdf92691-c6fe-42b9-a0e2-a4cd716fa811
+
+
+## Referenced sources and materials
+
+Materials other than those covered in class are as follows:
+
+Referred to https://popsql.com/learn-sql/sql-server/how-to-have-multiple-counts-in-sql-server for guidance in compiling the regex for data cleaning
+ChatGPT was used to identify bugs in database cleaning and offer potential solutions (not very useful)
+D3 and Python documentation of data cleaning
+StackOverfloww
 
 
