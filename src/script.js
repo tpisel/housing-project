@@ -53,10 +53,11 @@ L.geoJson(data, {
     onEachFeature: function(feature, layer) {
         layer.on({
             click: function(event){
-                const name = feature.properties.vic_lga__3;
-                updateChart(name);
-                // Zoom the map to the bounds of the clicked layer
-                myMap.fitBounds(event.target.getBounds());
+              // Zoom the map to the bounds of the clicked layer
+              myMap.fitBounds(event.target.getBounds());
+              // Call the function to update the charts
+              const name = feature.properties.vic_lga__3;
+              updateChart(name);
             }
         });
         layer.bindPopup("<h3>" + feature.properties.lga_pid + "</h3> <hr> <h5>" + feature.properties.vic_lga__2 + "</h5>");
@@ -68,6 +69,7 @@ L.geoJson(data, {
 const chart1 = Highcharts.chart('highChart1', {
   chart: {type: 'column'},
   title: {text: 'Total Number of Planning Applications by Dwelling Type'},
+  xAxis: {categories:['1 Storey', '2 Storey', '3 Storey', '4 Storey', '5 Storey']},
   yAxis: {title: {text: 'Total Number of Planning Applications'}},
   plotOptions: {
     column: {
@@ -75,11 +77,12 @@ const chart1 = Highcharts.chart('highChart1', {
         colors: randomColors // Add more colors if needed
     }
   },
-  series: [{name: 'Dwellings',data: []}]
+  series: [{name: 'Dwellings',data: [1,2,3,4,5]}]
 });
 const chart2 = Highcharts.chart('highChart2', {
   chart: {type: 'column'},
   title: {text: 'Total Number of Current Dwellings by Dwelling Type'},
+  xAxis: {categories:['Single Storey', 'Two Storey', 'Three Storey', 'Four and Above Storey']},
   yAxis: {title: {text: 'Total Number of Current Dwellings'}},
   plotOptions: {
     column: {
@@ -87,19 +90,21 @@ const chart2 = Highcharts.chart('highChart2', {
         colors: randomColors // Add more colors if needed
     }
   },
-  series: [{name: 'Dwellings',data: []}]
+  series: [{name: 'Dwellings',data: [1,2,3,5]}]
 });
 const chart3 = Highcharts.chart('highChart3', {
-  chart: {type: 'column'},
+  chart: {type: 'pie'},
   title: {text: 'Distribution of Cars per household'},
-  yAxis: {title: {text: 'Number of Instances'}},
-  plotOptions: {
-    column: {
-        colorByPoint: true,
-        colors: randomColors // Add more colors if needed
-    }
-  },
-  series: [{name: 'Cars',data: []}]
+  series: [{
+    name: 'Data',
+    data: [
+      { name: 'One Car', y: 100 },
+      { name: 'Two Car', y: 155  },
+      { name: 'Three Car', y: 37  },
+      { name: 'Four Car', y: 10  },
+      { name: 'Four or Mors Cars', y: 97  }
+  ]
+  }]
 });
 
 // Set the api url to get the charting data
@@ -200,12 +205,9 @@ function updateChart(areaName) {
     });
   });
 
-
-  // Create random colors array
-const randomColors3 = getRandomColorArray(6);
 // Get the data from api, read it and create the categories and values list
 d3.json(cars_api).then(function(data) {
-  categories = ['No Cars','One Car','Two Cars','Three Cars','Four or More Cars'];
+  categories = ['No Cars', 'One Car', 'Two Cars', 'Three Cars', 'Four or Mors Cars'];
   values = [];
   data.forEach(element => {
     // Transform the census name for correct mapping for some of the LGA's
@@ -219,26 +221,24 @@ d3.json(cars_api).then(function(data) {
     }
     let censusNameUpper = censusName.toUpperCase();
     if(areaName === censusNameUpper){
-      values = [element['num_mvs_per_dweling_0_mvs'], element['num_mvs_per_dweling_2_mvs'], element['num_mvs_per_dweling_1_mvs'], element['num_mvs_per_dweling_3_mvs'], element['num_mvs_per_dweling_4mo_mvs']]
+      values = [element['num_mvs_per_dweling_0_mvs'], element['num_mvs_per_dweling_1_mvs'], element['num_mvs_per_dweling_2_mvs'], element['num_mvs_per_dweling_3_mvs'], element['num_mvs_per_dweling_4mo_mvs']]
     }
   });
   // Update the chart with categories and values array
   chart3.update({
-    xAxis: {categories:categories,
-      title: {
-        text: 'Original Data From: 2021 Census'
-      }
-    },
-    plotOptions: {
-      column: {
-          colorByPoint: true,
-          colors: randomColors3
-      }
-    },
-    series: [{data: values}],
+    series: [{
+      name: 'Data',
+      data: [
+          { name: categories[0], y: values[0] },
+          { name: categories[1], y: values[1] },
+          { name: categories[2], y: values[2] },
+          { name: categories[3], y: values[3] },
+          { name: categories[4], y: values[4] }
+      ]
+    }],
     tooltip: {
       formatter: function() {
-          return '<b>' + "Total Cars" + '</b>: ' + this.y;
+          return '<b>' + "Total Household" + '</b>: ' + this.y;
       }
     }
   });
