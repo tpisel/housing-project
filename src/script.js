@@ -60,7 +60,7 @@ L.geoJson(data, {
               updateChart(name);
             }
         });
-        layer.bindPopup("<h3>" + feature.properties.lga_pid + "</h3> <hr> <h5>" + feature.properties.vic_lga__2 + "</h5>");
+        layer.bindPopup("<h4>" + "LGA ID: " + feature.properties.lga_pid + "</h4> <hr> <h5>" + "LGA Name: " + feature.properties.vic_lga__2 + "</h5>");
     }
 }).addTo(myMap);
 });
