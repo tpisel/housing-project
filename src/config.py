@@ -15,10 +15,12 @@ endpoints = [
         "name": "cars",
         "table": "vic_selected_census",
         "columns": [
+            "census_name_2021",
             "num_mvs_per_dweling_0_mvs",
             "num_mvs_per_dweling_1_mvs",
             "num_mvs_per_dweling_2_mvs",
-            "num_mvs_per_dweling_3_mvs"
+            "num_mvs_per_dweling_3_mvs",
+            "num_mvs_per_dweling_4mo_mvs"
             ]
     },
     {
@@ -75,7 +77,7 @@ endpoints = [
 from src.utils import date_n_days_ago
 
 parameters = {
-    'api_page_limit': 5, #40, # leave at 2 for testing
+    'api_page_limit': 10, #40, # leave at 2 for testing
     'api_age_limit': date_n_days_ago(365),
     'api_wait_s': 0.05
 }

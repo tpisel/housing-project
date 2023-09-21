@@ -55,6 +55,8 @@ L.geoJson(data, {
             click: function(event){
                 const name = feature.properties.vic_lga__3;
                 updateChart(name);
+                // Zoom the map to the bounds of the clicked layer
+                myMap.fitBounds(event.target.getBounds());
             }
         });
         layer.bindPopup("<h3>" + feature.properties.lga_pid + "</h3> <hr> <h5>" + feature.properties.vic_lga__2 + "</h5>");
@@ -87,10 +89,23 @@ const chart2 = Highcharts.chart('highChart2', {
   },
   series: [{name: 'Dwellings',data: []}]
 });
+const chart3 = Highcharts.chart('highChart3', {
+  chart: {type: 'column'},
+  title: {text: 'Distribution of Cars per household'},
+  yAxis: {title: {text: 'Number of Instances'}},
+  plotOptions: {
+    column: {
+        colorByPoint: true,
+        colors: randomColors // Add more colors if needed
+    }
+  },
+  series: [{name: 'Cars',data: []}]
+});
 
 // Set the api url to get the charting data
 const application_api = 'http://127.0.0.1:5000/api/nstories';
 const dwelling_api = 'http://127.0.0.1:5000/api/dwellings';
+const cars_api = 'http://127.0.0.1:5000/api/cars';
 
 // Create the arrays
 let categories = [];
@@ -184,4 +199,48 @@ function updateChart(areaName) {
       }
     });
   });
+
+
+  // Create random colors array
+const randomColors3 = getRandomColorArray(6);
+// Get the data from api, read it and create the categories and values list
+d3.json(cars_api).then(function(data) {
+  categories = ['No Cars','One Car','Two Cars','Three Cars','Four or More Cars'];
+  values = [];
+  data.forEach(element => {
+    // Transform the census name for correct mapping for some of the LGA's
+    let censusName = element.census_name_2021;
+    if(censusName === 'Bayside (Vic.)'){
+      censusName = 'Bayside';
+    }else if(censusName === 'Kingston (Vic.)'){
+      censusName = 'Kingston';
+    }else if(censusName === 'Latrobe (Vic.)'){
+      censusName = 'Latrobe';
+    }
+    let censusNameUpper = censusName.toUpperCase();
+    if(areaName === censusNameUpper){
+      values = [element['num_mvs_per_dweling_0_mvs'], element['num_mvs_per_dweling_2_mvs'], element['num_mvs_per_dweling_1_mvs'], element['num_mvs_per_dweling_3_mvs'], element['num_mvs_per_dweling_4mo_mvs']]
+    }
+  });
+  // Update the chart with categories and values array
+  chart3.update({
+    xAxis: {categories:categories,
+      title: {
+        text: 'Original Data From: 2021 Census'
+      }
+    },
+    plotOptions: {
+      column: {
+          colorByPoint: true,
+          colors: randomColors3
+      }
+    },
+    series: [{data: values}],
+    tooltip: {
+      formatter: function() {
+          return '<b>' + "Total Cars" + '</b>: ' + this.y;
+      }
+    }
+  });
+});
 }

@@ -37,7 +37,7 @@ for endpoint in endpoints:
 # example to copy
 @app.route('/api/exampleroute')
 def exampleroute():
-    query = 'select * from vic_selected_census limit 1'
+    query = 'select * from vic_selected_census'
     with engine.connect() as conn:
         result = conn.execute(text(query))
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
