@@ -11,8 +11,6 @@ Monash data bootcamp project 3
 
 ## Topic 
 
-// Mapping planning applications, housing and cars
-
 ![](img/header.jpg)
 
 
@@ -27,7 +25,7 @@ This is an end-to-end data visualisation application that retrieves data from an
 
 ## Pre-requisites
 
-You will need to have Postgres installed. A `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for your postgres password and an API key from PlanningAlerts. Sign up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
+You will need to have Postgres installed. A conda `requirements.txt` has been provided in the root directory. The first time you run the app, you will be asked for your postgres password and an API key from PlanningAlerts. Sign up to obtain a free API key [here](https://www.planningalerts.org.au/api/howto). The script will save the API key on your local keyring.
 
 
 
@@ -50,6 +48,9 @@ Once the database has been created, you can run `python initialise.py` without t
 - `config.py` a configuration file that determines what is exposed from the database
 - `callapi.py` calls the planning alerts api and saves the data in the database
 - `utils.py` includes misc. tooling and convenience functions
+- `ctas.py` includes SQL commands to create convenience views for querying
+- `script.js` and `melbournelgas.js` map and render the leaflet plots and dynamic dashboard
+- `style.css` 
 
 
 ### `/resources` data
@@ -65,20 +66,24 @@ Data from the [2021 Census](https://www.abs.gov.au/census/find-census-data/datap
 As the column names in these files are are abbreviated, a reference document with longer column names is included in `cell_descriptors.csv`
 
 Data from the PlanningApplications API: https://www.planningalerts.org.au/api/howto
-This data is collected by their API, and is free to the public for non-commercial use.
+
+This data is scraped from council sites, and is free to the public for non-commercial use via their API.
 
 GeoScape LGA data: Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0)
-**This dataset was originally found on data.gov.au "VIC Local Government Areas - Geoscape Administrative Boundaries". Please visit the source to access the original metadata of the dataset:
+
+This dataset was originally found on data.gov.au "VIC Local Government Areas - Geoscape Administrative Boundaries". Please visit the source to access the original metadata of the dataset:
 https://data.gov.au/data/dataset/bdf92691-c6fe-42b9-a0e2-a4cd716fa811
+
+Please note that at time of submission the LGA shapefiles API endpoint is unstable, but extracts from it have been made and are available on request.
 
 
 ## Referenced sources and materials
 
 Materials other than those covered in class are as follows:
 
-Referred to https://popsql.com/learn-sql/sql-server/how-to-have-multiple-counts-in-sql-server for guidance in compiling the regex for data cleaning
-ChatGPT was used to identify bugs in database cleaning and offer potential solutions (not very useful)
-D3 and Python documentation of data cleaning
-StackOverfloww
+- Referred to https://popsql.com/learn-sql/sql-server/how-to-have-multiple-counts-in-sql-server for guidance in compiling the regex for data cleaning
+- ChatGPT was used to identify bugs in database cleaning and offer potential solutions (not very useful)
+- D3 and Python documentation of data cleaning
+- StackOverflow
 
 

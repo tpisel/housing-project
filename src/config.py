@@ -77,7 +77,7 @@ endpoints = [
 from src.utils import date_n_days_ago
 
 parameters = {
-    'api_page_limit': 10, #40, # leave at 2 for testing
+    'api_page_limit': 10, # dial this back as necessary
     'api_age_limit': date_n_days_ago(365),
-    'api_wait_s': 0.05
+    'api_wait_s': 0.2
 }

@@ -4,6 +4,8 @@ from psycopg2 import sql
 from sqlalchemy import create_engine, text
 import argparse
 import webbrowser
+from threading import Timer
+import os
 
 from src.utils import csv_to_table, get_secret
 from src.callapi import api_to_db
@@ -80,11 +82,16 @@ def initialise():
 
     # start app
     start_app()
-    
+
+# add pages to open here
+def open_pages():
+    webbrowser.open('http://127.0.0.1:5000/')
+    webbrowser.open("file://" + os.path.abspath("index.html"))
+
 def start_app():
+    # delayed opn of site until server running
+    Timer(1, open_pages).start()
     app.run()
-    # webbrowser.open('http://127.0.0.1:5000/')
-    # webbrowser.open('index.html')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Initialise the database.')
