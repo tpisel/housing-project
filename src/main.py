@@ -6,7 +6,6 @@ from src.utils import get_secret, jsonify_from_result, generate_li
 from sqlalchemy import create_engine, MetaData, text
 from flask import Flask
 from flask_cors import CORS
-
 app = Flask(__name__)
 cors = CORS(app)
 
@@ -34,15 +33,15 @@ for endpoint in endpoints:
 
 # ADD ANY ADDITIONAL ROUTES HERE! (and your transform scripts)
 
-# example to copy
-@app.route('/api/exampleroute')
-def exampleroute():
-    query = 'select * from vic_selected_census limit 1'
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        df = pd.DataFrame(result.fetchall(), columns=result.keys())
-        # ADD PANDAS TRANSFORMS HERE
-        return df.to_json(orient='records', date_format='iso')
+# example to copy - Blanked out since unnecessary
+# @app.route('/api/exampleroute')
+# def exampleroute():
+#     query = 'select * from vic_selected_census limit 1'
+#     with engine.connect() as conn:
+#         result = conn.execute(text(query))
+#         df = pd.DataFrame(result.fetchall(), columns=result.keys())
+#         # ADD PANDAS TRANSFORMS HERE
+#         return df.to_json(orient='records', date_format='iso')
 
 
 
@@ -73,7 +72,7 @@ def dwellings():
 # ADD YOUR ENDPOINTS HERE to have them show up on the home page:
 
 root_menu_dict = [
-    'exampleroute',
+    # 'exampleroute',
     'nstories',
     'dwellings'
 ]

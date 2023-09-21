@@ -18,7 +18,9 @@ endpoints = [
             "num_mvs_per_dweling_0_mvs",
             "num_mvs_per_dweling_1_mvs",
             "num_mvs_per_dweling_2_mvs",
-            "num_mvs_per_dweling_3_mvs"
+            "num_mvs_per_dweling_3_mvs",
+            "num_mvs_per_dweling_4mo_mvs",
+            "Num_MVs_per_dweling_Tot"
             ]
     },
     {
@@ -56,17 +58,17 @@ endpoints = [
                     "lga_fullname"]
     },
     
-    {
-        "name": "cleaned_planning_applications", 
-        "table": "single_storey",
-        "columns": [
-            "id", 
-            "description",
-            "lat", 
-            "lng", 
-            "lga_fullname",
-            "storey"]
-    }
+    # {
+    #     "name": "cleaned_planning_applications", 
+    #     "table": "single_storey",
+    #     "columns": [
+    #         "id", 
+    #         "description",
+    #         "lat", 
+    #         "lng", 
+    #         "lga_fullname",
+    #         "storey"]
+    # }
 ]
 
 
@@ -75,7 +77,7 @@ endpoints = [
 from src.utils import date_n_days_ago
 
 parameters = {
-    'api_page_limit': 5, #40, # leave at 2 for testing
+    'api_page_limit': 10, #40, # leave at 2 for testing, moved to 10
     'api_age_limit': date_n_days_ago(365),
     'api_wait_s': 0.05
 }
