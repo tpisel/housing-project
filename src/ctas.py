@@ -111,7 +111,7 @@ def run_ctas(engine):
     print('running select queries')
     with engine.connect() as connection:
         connection.execute(text(query_list))
-        #connection.commit()
+        connection.commit()
     print('select queries run')
 
 
